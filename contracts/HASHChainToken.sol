@@ -32,7 +32,7 @@ contract DMToken {
 
     // 可用token
     function availableBalance(address _owner) constant returns (uint256) {
-        if (msg.sender != owner) {
+        if (_owner == owner) {
             if (balanceLocks[_owner].unlockDate < now) {
                 return balances[_owner];
             } else {
